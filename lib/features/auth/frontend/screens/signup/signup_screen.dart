@@ -75,6 +75,43 @@ class SignUpScreenState extends State<SignUpScreen> {
             const SizedBox(
               height: 20,
             ),
+            Center(
+              child: Stack(
+                children: [
+                  imageFile != null
+                      ? CircleAvatar(
+                          radius: 40,
+                          backgroundImage: FileImage(imageFile!),
+                        )
+                      : const CircleAvatar(
+                          radius: 40,
+                          backgroundImage:
+                              AssetImage('assets/images/avatar.png'),
+                        ),
+                  Positioned(
+                    left: 35,
+                    //trial and error
+                    top: 40,
+                    child: IconButton(
+                      onPressed: () {
+                        pickImage(context);
+                        setState(() {
+                          //it will update the imageFile value;
+                        });
+                      },
+                      icon: const Icon(
+                        Icons.add_a_photo,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
             Container(
               height: size.height * 0.62,
               width: double.infinity,
@@ -133,7 +170,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                 ),
                 InkWell(
                   onTap: () {
-                    moveScreen(context, const LoginScreen(), isPushReplacement: true);
+                    moveScreen(context, const LoginScreen(),
+                        isPushReplacement: true);
                   },
                   child: Text(
                     "Login here!",
