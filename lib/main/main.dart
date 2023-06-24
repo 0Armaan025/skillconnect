@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skillconnect/features/onboarding/screens/onboarding_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,12 +15,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Scaffold(
-        body: Center(
-          child: Text("SkillConnect!"),
-          //connecting my phone to check if this works!!!
-        ),
-      ),
+      home: const OnBoardingScreen(),
     );
   }
 }
