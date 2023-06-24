@@ -1,29 +1,36 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skillconnect/common/constants.dart';
 import 'package:skillconnect/common/custom_text_field.dart';
-import 'package:skillconnect/features/auth/frontend/screens/signup/signup_screen.dart';
+import 'package:skillconnect/features/auth/frontend/screens/login/login_screen.dart';
 
 import '../../../../../common/utils.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => LoginScreenState();
+  State<SignUpScreen> createState() => SignUpScreenState();
 }
 
-class LoginScreenState extends State<LoginScreen> {
+class SignUpScreenState extends State<SignUpScreen> {
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _skillsController = TextEditingController();
+  final TextEditingController _detailsController = TextEditingController();
 
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
+    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+
+    _skillsController.dispose();
+    _detailsController.dispose();
   }
 
   @override
@@ -44,7 +51,7 @@ class LoginScreenState extends State<LoginScreen> {
             ),
             Center(
               child: Text(
-                "Login Time!! 🔥",
+                "Sign Up Time!! 🔥",
                 style: GoogleFonts.roboto(
                   color: Colors.black,
                   fontSize: 26,
@@ -57,7 +64,7 @@ class LoginScreenState extends State<LoginScreen> {
             ),
             Center(
               child: Text(
-                "We are super excited to have you back! 😄",
+                "We are super excited to see you here! 😄",
                 style: GoogleFonts.poppins(
                   color: Colors.black,
                   fontSize: 15,
@@ -69,7 +76,7 @@ class LoginScreenState extends State<LoginScreen> {
               height: 20,
             ),
             Container(
-              height: size.height * 0.32,
+              height: size.height * 0.62,
               width: double.infinity,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               alignment: Alignment.center,
@@ -85,6 +92,8 @@ class LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomTextField(
+                              controller: _nameController, hintText: 'Name'),
+                          CustomTextField(
                             controller: _emailController,
                             hintText: 'Email',
                             keyboardType: TextInputType.emailAddress,
@@ -93,6 +102,15 @@ class LoginScreenState extends State<LoginScreen> {
                               controller: _passwordController,
                               isObscure: true,
                               hintText: 'Password'),
+                          CustomTextField(
+                              controller: _detailsController,
+                              maxLength: null,
+                              maxLines: null,
+                              keyboardType: TextInputType.multiline,
+                              hintText: 'Some Details about you! 😄'),
+                          CustomTextField(
+                              controller: _skillsController,
+                              hintText: 'Your skills?👀'),
                           const SizedBox(
                             height: 20,
                           ),
@@ -110,16 +128,15 @@ class LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "New to ${appName}?\t",
+                  "Already have an account?\t",
                   style: GoogleFonts.poppins(color: Colors.black, fontSize: 14),
                 ),
                 InkWell(
                   onTap: () {
-                    moveScreen(context, const SignUpScreen(),
-                        isPushReplacement: true);
+                    moveScreen(context, const LoginScreen(), isPushReplacement: true);
                   },
                   child: Text(
-                    "Sign Up here!",
+                    "Login here!",
                     style: GoogleFonts.poppins(
                         color: Colors.purple,
                         fontSize: 14,
@@ -145,7 +162,7 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
                 onPressed: () {},
                 child: Text(
-                  "Log In! 🔥",
+                  "Sign Up! 🔥",
                   style: GoogleFonts.poppins(
                     color: Colors.white,
                     fontSize: 16,

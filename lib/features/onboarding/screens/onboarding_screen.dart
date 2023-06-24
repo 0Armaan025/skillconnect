@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:skillconnect/common/utils.dart';
-import 'package:skillconnect/features/auth/frontend/screens/login/login_screen.dart';
+import 'package:skillconnect/features/auth/frontend/screens/signup/signup_screen.dart';
 
 import '../../../common/constants.dart';
 
@@ -20,6 +20,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Color(0xFFf3f4fd),
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, kToolbarHeight),
         child: makeAppBar(context),
@@ -71,7 +72,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ]),
               child: MaterialButton(
                 onPressed: () {
-                  moveScreen(context, const LoginScreen(),
+                  moveScreen(context, const SignUpScreen(),
                       isPushReplacement: true);
                 },
                 child: const Text(
