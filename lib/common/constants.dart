@@ -1,2 +1,2 @@
 const String appName = "SkillConnect";
-const String tagline = "Empower, Collaborate, Thrive.";
+const String appTagline = "Empower, Collaborate, Thrive.";
