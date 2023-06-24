@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../common/constants.dart';
 import '../../../common/utils.dart';
 import '../../../credentials/supabase.credentials.dart';
+import '../../home_screen/home_screen.dart';
 import '../models/user.dart';
 
 class AuthRepository {
@@ -49,7 +50,7 @@ class AuthRepository {
           .doc(uid)
           .set(newModel.toMap())
           .then((value) {
-        // moveScreen(context, HomeScreen(), isPushReplacement: true);
+        moveScreen(context, HomeScreen(), isPushReplacement: true);
       }).catchError((e) {});
     });
   }
@@ -60,7 +61,7 @@ class AuthRepository {
         .then((value) {
       uid = firebaseAuth.currentUser?.uid ?? '';
 
-      // moveScreen(context, const HomeScreen(), isPushReplacement: true);
+      moveScreen(context, const HomeScreen(), isPushReplacement: true);
     }).onError((error, stackTrace) {
       showSnackBar(context, error.toString());
     });

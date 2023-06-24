@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:skillconnect/common/utils.dart';
 import 'package:skillconnect/features/auth/frontend/screens/signup/signup_screen.dart';
+import 'package:skillconnect/features/home_screen/home_screen.dart';
 
 import '../../../common/constants.dart';
 
@@ -72,7 +73,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ]),
               child: MaterialButton(
                 onPressed: () {
-                  moveScreen(context, const SignUpScreen(),
+                  moveScreen(
+                      context,
+                      firebaseAuth.currentUser != null
+                          ? const HomeScreen()
+                          : const SignUpScreen(),
                       isPushReplacement: true);
                 },
                 child: const Text(
