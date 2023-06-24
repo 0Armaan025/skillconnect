@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skillconnect/common/constants.dart';
 import 'package:skillconnect/common/custom_text_field.dart';
+import 'package:skillconnect/features/auth/controllers/auth_controller.dart';
 import 'package:skillconnect/features/auth/frontend/screens/login/login_screen.dart';
+import 'package:skillconnect/features/auth/models/user.dart';
 
 import '../../../../../common/utils.dart';
 
@@ -31,6 +34,19 @@ class SignUpScreenState extends State<SignUpScreen> {
 
     _skillsController.dispose();
     _detailsController.dispose();
+  }
+
+  void signUp() {
+    AuthController controller = AuthController();
+    UserModel model = UserModel(
+        uid: '',
+        name: _nameController.text,
+        email: _emailController.text,
+        details: _detailsController.text,
+        password: _passwordController.text,
+        skills: _skillsController.text,
+        profilePictureUrl: '');
+    controller.register(context, model);
   }
 
   @override
@@ -198,7 +214,9 @@ class SignUpScreenState extends State<SignUpScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  signUp();
+                },
                 child: Text(
                   "Sign Up! 🔥",
                   style: GoogleFonts.poppins(

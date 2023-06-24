@@ -20,7 +20,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Color(0xFFf3f4fd),
+      backgroundColor: bgColor,
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, kToolbarHeight),
         child: makeAppBar(context),

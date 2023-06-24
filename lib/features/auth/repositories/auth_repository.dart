@@ -40,7 +40,7 @@ class AuthRepository {
           details: model.details,
           password: model.password,
           skills: model.skills,
-          profilePictureUrl: model.profilePictureUrl);
+          profilePictureUrl: publicUrl);
 
       imageFile = null;
 
