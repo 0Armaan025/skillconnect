@@ -1,11 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skillconnect/common/constants.dart';
 import 'package:skillconnect/common/custom_text_field.dart';
-import 'package:skillconnect/features/auth/controllers/auth_controller.dart';
 import 'package:skillconnect/features/auth/frontend/screens/login/login_screen.dart';
+import 'package:skillconnect/features/auth/frontend/skills_selection/skills_selection_screen.dart';
 import 'package:skillconnect/features/auth/models/user.dart';
 
 import '../../../../../common/utils.dart';
@@ -21,7 +19,6 @@ class SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _skillsController = TextEditingController();
   final TextEditingController _detailsController = TextEditingController();
 
   @override
@@ -31,22 +28,7 @@ class SignUpScreenState extends State<SignUpScreen> {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-
-    _skillsController.dispose();
     _detailsController.dispose();
-  }
-
-  void signUp() {
-    AuthController controller = AuthController();
-    UserModel model = UserModel(
-        uid: '',
-        name: _nameController.text,
-        email: _emailController.text,
-        details: _detailsController.text,
-        password: _passwordController.text,
-        skills: _skillsController.text,
-        profilePictureUrl: '');
-    controller.register(context, model);
   }
 
   @override
@@ -117,7 +99,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                       },
                       icon: const Icon(
                         Icons.add_a_photo,
-                        color: Colors.black,
+                        color: Colors.yellow,
                         size: 20,
                       ),
                     ),
@@ -161,9 +143,6 @@ class SignUpScreenState extends State<SignUpScreen> {
                               maxLines: null,
                               keyboardType: TextInputType.multiline,
                               hintText: 'Some Details about you! 😄'),
-                          CustomTextField(
-                              controller: _skillsController,
-                              hintText: 'Your skills?👀'),
                           const SizedBox(
                             height: 20,
                           ),
@@ -215,10 +194,19 @@ class SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 onPressed: () {
-                  signUp();
+                  UserModel model = UserModel(
+                      uid: uid,
+                      name: _nameController.text.toString().trim(),
+                      email: _emailController.text.toString(),
+                      details: _detailsController.text.toString(),
+                      password: _passwordController.text.toString(),
+                      skills: [''],
+                      profilePictureUrl: '');
+                  moveScreen(context, SkillSelectionScreen(model: model),
+                      isPushReplacement: true);
                 },
                 child: Text(
-                  "Sign Up! 🔥",
+                  "Continue! 🔥",
                   style: GoogleFonts.poppins(
                     color: Colors.white,
                     fontSize: 16,

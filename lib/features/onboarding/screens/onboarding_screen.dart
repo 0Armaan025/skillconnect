@@ -76,7 +76,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   moveScreen(
                       context,
                       firebaseAuth.currentUser != null
-                          ? const HomeScreen()
+                          ? HomeScreen()
                           : const SignUpScreen(),
                       isPushReplacement: true);
                 },

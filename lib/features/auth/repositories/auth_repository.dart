@@ -61,7 +61,7 @@ class AuthRepository {
         .then((value) {
       uid = firebaseAuth.currentUser?.uid ?? '';
 
-      moveScreen(context, const HomeScreen(), isPushReplacement: true);
+      moveScreen(context, HomeScreen(), isPushReplacement: true);
     }).onError((error, stackTrace) {
       showSnackBar(context, error.toString());
     });

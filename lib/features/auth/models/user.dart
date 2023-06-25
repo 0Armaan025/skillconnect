@@ -1,13 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 class UserModel {
   final String uid;
   final String name;
   final String email;
   final String details;
   final String password;
-  final String skills;
+  final List<String> skills;
   final String profilePictureUrl;
   UserModel({
     required this.uid,
@@ -19,16 +21,13 @@ class UserModel {
     required this.profilePictureUrl,
   });
 
-
-  //I'll brb
-
   UserModel copyWith({
     String? uid,
     String? name,
     String? email,
     String? details,
     String? password,
-    String? skills,
+    List<String>? skills,
     String? profilePictureUrl,
   }) {
     return UserModel(
@@ -61,14 +60,15 @@ class UserModel {
       email: map['email'] as String,
       details: map['details'] as String,
       password: map['password'] as String,
-      skills: map['skills'] as String,
+      skills: List<String>.from((map['skills'] as List<String>)),
       profilePictureUrl: map['profilePictureUrl'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory UserModel.fromJson(String source) =>
+      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -78,26 +78,24 @@ class UserModel {
   @override
   bool operator ==(covariant UserModel other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.uid == uid &&
-      other.name == name &&
-      other.email == email &&
-      other.details == details &&
-      other.password == password &&
-      other.skills == skills &&
-      other.profilePictureUrl == profilePictureUrl;
+
+    return other.uid == uid &&
+        other.name == name &&
+        other.email == email &&
+        other.details == details &&
+        other.password == password &&
+        listEquals(other.skills, skills) &&
+        other.profilePictureUrl == profilePictureUrl;
   }
 
   @override
   int get hashCode {
     return uid.hashCode ^
-      name.hashCode ^
-      email.hashCode ^
-      details.hashCode ^
-      password.hashCode ^
-      skills.hashCode ^
-      profilePictureUrl.hashCode;
+        name.hashCode ^
+        email.hashCode ^
+        details.hashCode ^
+        password.hashCode ^
+        skills.hashCode ^
+        profilePictureUrl.hashCode;
   }
 }
-
