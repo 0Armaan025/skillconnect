@@ -54,4 +54,4 @@ We welcome contributions from the community to enhance SkillConnect. To contribu
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE.md). Feel free to use, modify, and distribute it as per the terms of the license.
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as per the terms of the license.
