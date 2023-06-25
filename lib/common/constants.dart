@@ -8,6 +8,8 @@ import '../features/courses/screens/courses_screen.dart';
 
 const String appName = "SkillConnect";
 const String appTagline = "Empower, Collaborate, Thrive.";
+String userDetails = "";
+List<String> userSkills = [];
 
 const Color bgColor = Color(0xFFf3f4fd);
 final List<Course> courses = [

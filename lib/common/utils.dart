@@ -1,11 +1,12 @@
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skillconnect/features/chat/screens/chat_screen.dart';
 import 'package:skillconnect/features/courses/screens/courses_screen.dart';
 import 'package:skillconnect/features/home_screen/screens/home_screen.dart';
+import 'package:skillconnect/features/jobs/screens/job_details_screen.dart';
+import 'package:skillconnect/features/jobs/screens/job_opportunities_screen.dart';
 import 'package:skillconnect/features/mentoring/screens/mentors_list_screen.dart';
 import 'package:skillconnect/features/profile/screens/profile_screen.dart';
 
@@ -115,7 +116,7 @@ Drawer buildDrawer(BuildContext context) {
           ),
           title: const Text('Job Opportunities'),
           onTap: () {
-            // Handle Job Opportunities onTap
+            moveScreen(context, JobOpportunitiesScreen());
           },
         ),
         ListTile(

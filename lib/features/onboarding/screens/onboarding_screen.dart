@@ -35,6 +35,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       userName = snapshot.get('name');
       userProfileUrl = snapshot.get('profilePictureUrl');
       email = snapshot.get('email');
+      userDetails = snapshot.get('details');
+      userSkills = snapshot.get('skills') as List<String>;
       setState(() {});
     });
   }

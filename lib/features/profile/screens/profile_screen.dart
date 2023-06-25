@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:skillconnect/common/constants.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final String profilePictureUrl = 'assets/profile_picture.jpg';
-  final String name = 'John Doe';
-  final String email = 'johndoe@example.com';
-  final String details =
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
-  final List<String> skills = ['Flutter', 'Web Development', 'UI/UX Design'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +16,11 @@ class ProfileScreen extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 80,
-              backgroundImage: AssetImage(profilePictureUrl),
+              backgroundImage: NetworkImage(userProfileUrl),
             ),
             SizedBox(height: 16.0),
             Text(
-              name,
+              userName,
               style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8.0),
@@ -63,10 +57,10 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(height: 8.0),
             Wrap(
               spacing: 8.0,
-              children: skills
+              children: userSkills
                   .map(
-                    (skill) => Chip(
-                      label: Text(skill),
+                    (userSkills) => Chip(
+                      label: Text(userSkills),
                     ),
                   )
                   .toList(),
@@ -78,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 8.0),
             Text(
-              details,
+              userDetails,
               style: TextStyle(fontSize: 16.0),
               textAlign: TextAlign.justify,
             ),
