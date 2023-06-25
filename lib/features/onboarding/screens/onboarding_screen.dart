@@ -78,7 +78,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               padding: EdgeInsets.symmetric(horizontal: 25),
               child: Center(
                 child: Text(
-                    "SkillConnect: ${appTagline} Join a vibrant community of passionate individuals. Share your expertise, find mentors, and expand your skills. Unleash your potential and transform the way we learn and thrive together!"),
+                    "SkillConnect: ${appTagline} Join SkillConnect, meet mentors, get amazing skill knowledge from courses! learn from people in the chat, get some amazing job opportunities and collab for being a team and for doing the dream work!"),
               ),
             ),
             const SizedBox(

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../common/constants.dart';
 import '../../../common/utils.dart';
@@ -40,6 +41,25 @@ class _LoadingScreenState extends State<LoadingScreen> {
           ),
         ),
       );
+    } else {
+      String? encodeQueryParameters(Map<String, String> params) {
+        return params.entries
+            .map((MapEntry<String, String> e) =>
+                '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+            .join('&');
+      }
+
+      final Uri emailUri = Uri(
+        scheme: 'mailto',
+        path: 'armaan22000@gmail.com',
+        query: encodeQueryParameters(<String, String>{
+          'subject': 'Mentoring Request',
+          'body':
+              'Hey there! I am ${userName} and I wanna be mentored from you 😄!',
+        }),
+      );
+
+      launchUrl(emailUri);
     }
   }
 

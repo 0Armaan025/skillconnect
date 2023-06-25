@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../../common/constants.dart';
 import 'courses_screen.dart';
 
 class EnrollScreen extends StatelessWidget {
@@ -65,16 +67,24 @@ class EnrollScreen extends StatelessWidget {
             SizedBox(height: 32.0),
             ElevatedButton(
               onPressed: () async {
-                final Email email = Email(
-                  body:
-                      'Hey! I wanna enroll into your course of ${course.title}',
-                  subject: 'Enrollment in course',
-                  
-                  recipients: ['armaan33000@gmail.com'],
-                  isHTML: false,
+                String? encodeQueryParameters(Map<String, String> params) {
+                  return params.entries
+                      .map((MapEntry<String, String> e) =>
+                          '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                      .join('&');
+                }
+
+                final Uri emailUri = Uri(
+                  scheme: 'mailto',
+                  path: 'armaan33000@gmail.com',
+                  query: encodeQueryParameters(<String, String>{
+                    'subject': 'Course Enrollment',
+                    'body':
+                        'Hey there! I am ${userName} and I have enrolled in your course from the SkillConnect app, please lmk the drive link!🔥',
+                  }),
                 );
 
-                await FlutterEmailSender.send(email);
+                launchUrl(emailUri);
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),

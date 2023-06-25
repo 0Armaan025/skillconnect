@@ -29,21 +29,6 @@ class CollaborateScreen extends StatefulWidget {
 }
 
 class _CollaborateScreenState extends State<CollaborateScreen> {
-  String email = 'armaan33000@gmail.com';
-  String subject = 'Collaboration Request';
-  String body = 'Hey there! I wanna collaborate on a project with you.';
-
-  openGmail() async {
-    // Android and iOS
-    const uri =
-        'mailto:armaan33000@gmail.com?subject=Collaboration Request&body=I%20want%20to%20Collaborate';
-    if (await canLaunch(uri)) {
-      await launch(uri);
-    } else {
-      throw 'Could not launch $uri';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -185,7 +170,24 @@ class _CollaborateScreenState extends State<CollaborateScreen> {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: () {
-                    openGmail();
+                    String? encodeQueryParameters(Map<String, String> params) {
+                      return params.entries
+                          .map((MapEntry<String, String> e) =>
+                              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                          .join('&');
+                    }
+
+                    final Uri emailUri = Uri(
+                      scheme: 'mailto',
+                      path: 'armaan33000@gmail.com',
+                      query: encodeQueryParameters(<String, String>{
+                        'subject': 'Collaboration Request',
+                        'body':
+                            'Hey there! I am ${userName} and I wanna collaborate with you on the project!',
+                      }),
+                    );
+
+                    launchUrl(emailUri);
                   },
                   child: const Center(
                     child: Text(

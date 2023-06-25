@@ -60,7 +60,7 @@ class JobOpportunitiesScreen extends StatelessWidget {
                   Chip(
                     backgroundColor: Colors.blue,
                     label: Text(
-                      job.location,
+                      "Check details",
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -98,31 +98,14 @@ class Job {
 // Dummy job data
 final List<Job> jobList = [
   Job(
-    companyLogo: 'assets/images/avatar.png',
-    companyName: 'Company 1',
-    qualifications: ["madfa", "b"],
-    position: 'Job Position 1',
-    location: 'Location 1',
-    description: 'Job Description 1',
-    responsiblities: ["b", "m"],
+    companyLogo: 'assets/images/connection.png',
+    companyName: 'LingHacks V',
+    qualifications: ["high school"],
+    position: 'PR Management',
+    location: 'New York City',
+    description: 'Manage the public relations of the company',
+    responsiblities: ["Managing public relations", "Managing teams"],
   ),
-  Job(
-    companyLogo: 'assets/images/avatar.png',
-    companyName: 'Company 1',
-    qualifications: ["m", "b"],
-    position: 'Job Position 1',
-    location: 'Location 1',
-    description: 'Job Description 1',
-    responsiblities: ["b", "m"],
-  ),
-  Job(
-    companyLogo: 'assets/images/avatar.png',
-    companyName: 'Company 1',
-    qualifications: ["m", "b"],
-    position: 'Job Position 1',
-    location: 'Location 1',
-    description: 'Job Description 1',
-    responsiblities: ["b", "m"],
-  ),
+
   // Add more job entries as needed
 ];
