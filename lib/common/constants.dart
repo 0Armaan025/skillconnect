@@ -11,6 +11,8 @@ const Color bgColor = Color(0xFFf3f4fd);
 
 String uid = "";
 
+String userProfileUrl = "";
+
 File? imageFile;
 
 var firestore = FirebaseFirestore.instance;

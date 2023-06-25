@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skillconnect/features/skills_collaboration/screens/add_skill_collaboration.dart';
 
 import '../../../common/constants.dart';
 import '../../../common/utils.dart';
@@ -82,25 +83,30 @@ class _SkillCollaborativeWidgetState extends State<SkillCollaborativeWidget> {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              width: double.infinity,
-              height: 30,
-              margin: const EdgeInsets.only(left: 10, right: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                gradient: LinearGradient(
-                  colors: [Colors.blue, Colors.green],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+            child: InkWell(
+              onTap: () {
+                moveScreen(context, const AddSkillCollaborationScreen());
+              },
+              child: Container(
+                width: double.infinity,
+                height: 30,
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  gradient: const LinearGradient(
+                    colors: [Colors.blue, Colors.green],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
                 ),
-              ),
-              child: Center(
-                child: Text(
-                  "Collaborate",
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
+                child: Center(
+                  child: Text(
+                    "Collaborate",
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
