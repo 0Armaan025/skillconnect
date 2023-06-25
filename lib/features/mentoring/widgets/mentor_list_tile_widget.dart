@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skillconnect/common/utils.dart';
+import 'package:skillconnect/features/mentoring/screens/get_mentored_screen.dart';
 
 class MentorsListTileWidget extends StatefulWidget {
   const MentorsListTileWidget({super.key});
@@ -54,21 +56,26 @@ class _MentorsListTileWidgetState extends State<MentorsListTileWidget> {
               const SizedBox(
                 width: 10,
               ),
-              Container(
-                height: 50,
-                width: 80,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.blue.shade400,
-                ),
-                alignment: Alignment.center,
-                child: const Center(
-                  child: Text(
-                    'Get Mentored',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
+              InkWell(
+                onTap: () {
+                  moveScreen(context, GetMentoredScreen());
+                },
+                child: Container(
+                  height: 50,
+                  width: 80,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.blue.shade400,
+                  ),
+                  alignment: Alignment.center,
+                  child: const Center(
+                    child: Text(
+                      'Get Mentored',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:skillconnect/common/utils.dart';
+import 'package:skillconnect/features/courses/screens/add_course_screen.dart';
 import 'package:skillconnect/features/courses/screens/enroll_screen.dart';
 
-class CourseScreen extends StatelessWidget {
-  final List<Course> courses = [
-    Course(
-      title: 'Flutter Development',
-      description: 'Learn how to build mobile apps with Flutter.',
-    ),
-    Course(
-      title: 'Web Development',
-      description:
-          'Master the art of web development with HTML, CSS, and JavaScript.',
-    ),
-  ];
+import '../../../common/constants.dart';
 
+class CourseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +15,13 @@ class CourseScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: IconButton(
           icon: Icon(Icons.add),
-          onPressed: () {},
+          onPressed: () {
+            moveScreen(
+                context,
+                AddCourseScreen(
+                  courses: courses,
+                ));
+          },
         ),
         onPressed: () {},
       ),

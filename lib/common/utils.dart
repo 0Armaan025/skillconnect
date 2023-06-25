@@ -7,6 +7,7 @@ import 'package:skillconnect/features/chat/screens/chat_screen.dart';
 import 'package:skillconnect/features/courses/screens/courses_screen.dart';
 import 'package:skillconnect/features/home_screen/screens/home_screen.dart';
 import 'package:skillconnect/features/mentoring/screens/mentors_list_screen.dart';
+import 'package:skillconnect/features/profile/screens/profile_screen.dart';
 
 import 'constants.dart';
 
@@ -98,56 +99,80 @@ Drawer buildDrawer(BuildContext context) {
           ),
         ),
         ListTile(
-          leading: const Icon(Icons.home),
+          leading: const Icon(
+            Icons.home,
+            color: Colors.blue,
+          ),
           title: const Text('Home'),
           onTap: () {
             moveScreen(context, HomeScreen());
           },
         ),
         ListTile(
-          leading: const Icon(Icons.work),
+          leading: const Icon(
+            Icons.work,
+            color: Colors.blue,
+          ),
           title: const Text('Job Opportunities'),
           onTap: () {
             // Handle Job Opportunities onTap
           },
         ),
         ListTile(
-          leading: const Icon(Icons.people),
+          leading: const Icon(
+            Icons.people,
+            color: Colors.blue,
+          ),
           title: const Text('Mentors'),
           onTap: () {
             moveScreen(context, const MentorsListScreen());
           },
         ),
         ListTile(
-          leading: const Icon(Icons.chat),
+          leading: const Icon(
+            Icons.chat,
+            color: Colors.blue,
+          ),
           title: const Text('Chat'),
           onTap: () {
             moveScreen(context, ChatScreen());
           },
         ),
         ListTile(
-          leading: const Icon(Icons.settings),
+          leading: const Icon(Icons.settings, color: Colors.purple),
           title: const Text('Settings'),
           onTap: () {
             // Handle Settings onTap
           },
         ),
         ListTile(
-          leading: const Icon(Icons.school),
+          leading: const Icon(
+            Icons.school,
+            color: Colors.blue,
+          ),
           title: const Text('Learn'),
           onTap: () {
             moveScreen(context, CourseScreen());
           },
         ),
         ListTile(
-          leading: const Icon(Icons.person),
-          title: const Text('Profile Screen'),
+          leading: const Icon(
+            Icons.person,
+            color: Colors.blue,
+          ),
+          title: const Text(
+            'Profile Screen',
+          ),
           onTap: () {
             // Handle Profile Screen onTap
+            moveScreen(context, ProfileScreen());
           },
         ),
         ListTile(
-          leading: const Icon(Icons.logout),
+          leading: const Icon(
+            Icons.logout,
+            color: Colors.blue,
+          ),
           title: const Text('Log Out'),
           onTap: () {
             // Handle Log Out onTap
