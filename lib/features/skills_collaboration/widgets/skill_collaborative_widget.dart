@@ -1,11 +1,27 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:skillconnect/features/skills_collaboration/screens/collaborate_screen.dart';
 
 import '../../../common/utils.dart';
 
 class SkillCollaborativeWidget extends StatefulWidget {
-  const SkillCollaborativeWidget({super.key});
+  final String profilePictureUrl;
+  final String name;
+  final String email;
+  final String details;
+  final String personDetails;
+  final List<String> skills;
+  const SkillCollaborativeWidget({
+    Key? key,
+    required this.profilePictureUrl,
+    required this.name,
+    required this.email,
+    required this.details,
+    required this.skills,
+    required this.personDetails,
+  }) : super(key: key);
 
   @override
   State<SkillCollaborativeWidget> createState() =>
@@ -41,7 +57,7 @@ class _SkillCollaborativeWidgetState extends State<SkillCollaborativeWidget> {
                 padding: const EdgeInsets.all(8),
                 child: CircleAvatar(
                   radius: 20,
-                  backgroundImage: NetworkImage('https://picsum.photos/120'),
+                  backgroundImage: NetworkImage(widget.profilePictureUrl),
                 ),
               ),
               Column(
@@ -49,14 +65,14 @@ class _SkillCollaborativeWidgetState extends State<SkillCollaborativeWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Armaan",
+                    "${widget.name}",
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    "armaan33000@gmail.com",
+                    "${widget.email}",
                     style: GoogleFonts.poppins(fontSize: 10),
                   ),
                 ],
@@ -69,7 +85,7 @@ class _SkillCollaborativeWidgetState extends State<SkillCollaborativeWidget> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Text(
-              "Lorem ispum lorem ispum lorem ispum lorem ispum",
+              "${widget.details}",
               style: GoogleFonts.roboto(
                 color: Colors.black,
                 fontWeight: FontWeight.w500,
@@ -84,7 +100,16 @@ class _SkillCollaborativeWidgetState extends State<SkillCollaborativeWidget> {
             alignment: Alignment.bottomCenter,
             child: InkWell(
               onTap: () {
-                moveScreen(context, const CollaborateScreen());
+                moveScreen(
+                    context,
+                    CollaborateScreen(
+                      details: widget.details,
+                      email: widget.email,
+                      name: widget.name,
+                      personDetails: widget.personDetails,
+                      profileUrl: widget.profilePictureUrl,
+                      skills: widget.skills,
+                    ));
               },
               child: Container(
                 width: double.infinity,

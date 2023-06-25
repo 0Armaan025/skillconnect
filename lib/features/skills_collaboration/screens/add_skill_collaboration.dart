@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skillconnect/features/skills_collaboration/controllers/collaboration_controller.dart';
+import 'package:skillconnect/features/skills_collaboration/models/collaboration.dart';
 
 import '../../../common/constants.dart';
 import '../../../common/utils.dart';
@@ -14,7 +17,38 @@ class AddSkillCollaborationScreen extends StatefulWidget {
 
 class _AddSkillCollaborationScreenState
     extends State<AddSkillCollaborationScreen> {
+  final TextEditingController _detailsController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   List<String> selectedSkills = [];
+
+  String name = "";
+  String profilePictureUrl = "";
+  String personDetails = "";
+
+  void getData() {
+    var data = firestore
+        .collection('users')
+        .doc(firebaseAuth.currentUser?.uid ?? '')
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      name = snapshot.get('name');
+      profilePictureUrl = snapshot.get('profilePictureUrl');
+      personDetails = snapshot.get('details');
+      setState(() {});
+    });
+  }
+
+  void makeProposal(BuildContext context) {
+    CollaborationController controller = CollaborationController();
+    CollaborationModel model = CollaborationModel(
+        details: _detailsController.text.trim(),
+        email: _emailController.text,
+        personDetails: personDetails,
+        name: name,
+        profileUrl: profilePictureUrl,
+        skills: selectedSkills);
+    controller.makeProposal(context, model);
+  }
 
   void selectSkill(String skill) {
     setState(() {
@@ -24,6 +58,13 @@ class _AddSkillCollaborationScreenState
         selectedSkills.add(skill);
       }
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
   }
 
   @override
@@ -70,6 +111,7 @@ class _AddSkillCollaborationScreenState
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
+                controller: _detailsController,
                 maxLines: null,
                 decoration: InputDecoration(
                   labelText: 'Describe what you want to do',
@@ -83,6 +125,7 @@ class _AddSkillCollaborationScreenState
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
+                controller: _emailController,
                 maxLines: null,
                 decoration: InputDecoration(
                   labelText: 'Email to contact you on!',
@@ -124,7 +167,9 @@ class _AddSkillCollaborationScreenState
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                makeProposal(context);
+              },
               child: Text('Make a proposal!'),
             ),
           ],

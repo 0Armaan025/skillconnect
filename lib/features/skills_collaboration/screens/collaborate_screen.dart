@@ -1,30 +1,46 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skillconnect/common/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:skillconnect/common/utils.dart';
 
 import '../../../common/constants.dart';
 
 class CollaborateScreen extends StatefulWidget {
-  const CollaborateScreen({super.key});
+  final String name;
+  final String profileUrl;
+  final String details;
+  final String email;
+  final String personDetails;
+  final List<String> skills;
+  const CollaborateScreen({
+    Key? key,
+    required this.name,
+    required this.personDetails,
+    required this.profileUrl,
+    required this.details,
+    required this.email,
+    required this.skills,
+  }) : super(key: key);
 
   @override
   State<CollaborateScreen> createState() => _CollaborateScreenState();
 }
 
 class _CollaborateScreenState extends State<CollaborateScreen> {
-  _launchEmail() async {
-    final Uri params = Uri(
-      scheme: 'armaan33000@gmail.com',
-      path: 'armaan33000@gmail.com',
-      query:
-          'subject=Collaboration%20Request&body=Hey there!%20I wanna collaborate on a project with you.',
-    );
-    String url = params.toString();
-    if (await canLaunch(url)) {
-      await launch(url);
+  String email = 'armaan33000@gmail.com';
+  String subject = 'Collaboration Request';
+  String body = 'Hey there! I wanna collaborate on a project with you.';
+
+  openGmail() async {
+    // Android and iOS
+    const uri =
+        'mailto:armaan33000@gmail.com?subject=Collaboration Request&body=I%20want%20to%20Collaborate';
+    if (await canLaunch(uri)) {
+      await launch(uri);
     } else {
-      throw 'Could not launch $url';
+      throw 'Could not launch $uri';
     }
   }
 
@@ -49,8 +65,8 @@ class _CollaborateScreenState extends State<CollaborateScreen> {
                   width: size.width * 0.45,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    image: const DecorationImage(
-                      image: NetworkImage('https://picsum.photos/250?image=9'),
+                    image: DecorationImage(
+                      image: NetworkImage(widget.profileUrl),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -61,7 +77,7 @@ class _CollaborateScreenState extends State<CollaborateScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Armaan",
+                        "${widget.name}",
                         style: GoogleFonts.poppins(
                           color: Colors.black,
                           fontSize: 24,
@@ -72,7 +88,7 @@ class _CollaborateScreenState extends State<CollaborateScreen> {
                         height: 5,
                       ),
                       Text(
-                        "armaan33000@gmail.com",
+                        "${widget.email}}",
                         style: GoogleFonts.poppins(
                           color: Colors.grey.shade500,
                           fontSize: 12,
@@ -87,7 +103,7 @@ class _CollaborateScreenState extends State<CollaborateScreen> {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           child: Text(
-                            "adescriptive text that no body asked you for and that is the one of the things that are the most important in the entire smeester of clases.",
+                            "${widget.personDetails}",
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 14,
@@ -120,7 +136,7 @@ class _CollaborateScreenState extends State<CollaborateScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Center(
                 child: Text(
-                  "adescriptive text that no body asked you for and that is the one of the things that are the most important in the entire smeester of clases.",
+                  "${widget.details}",
                   style: GoogleFonts.poppins(
                     color: Colors.black,
                     fontSize: 17,
@@ -135,7 +151,7 @@ class _CollaborateScreenState extends State<CollaborateScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Center(
                 child: Text(
-                  "Skills required:- [Flutter, Dart, Firebase, UI/UX]",
+                  "Skills required:- ${widget.skills}",
                   style: GoogleFonts.robotoCondensed(
                     color: Colors.black,
                     fontSize: 14,
@@ -169,7 +185,7 @@ class _CollaborateScreenState extends State<CollaborateScreen> {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: () {
-                    _launchEmail();
+                    openGmail();
                   },
                   child: const Center(
                     child: Text(

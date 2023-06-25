@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skillconnect/features/chat/screens/chat_screen.dart';
+import 'package:skillconnect/features/courses/screens/courses_screen.dart';
 import 'package:skillconnect/features/home_screen/screens/home_screen.dart';
 import 'package:skillconnect/features/mentoring/screens/mentors_list_screen.dart';
 
@@ -134,7 +135,7 @@ Drawer buildDrawer(BuildContext context) {
           leading: const Icon(Icons.school),
           title: const Text('Learn'),
           onTap: () {
-            // Handle Learn onTap
+            moveScreen(context, CoursesScreen());
           },
         ),
         ListTile(
