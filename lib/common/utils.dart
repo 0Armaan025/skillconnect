@@ -56,3 +56,99 @@ void showSnackBar(BuildContext context, String content) {
     ),
   );
 }
+
+Drawer buildDrawer() {
+  return Drawer(
+    child: ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        const DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.blue,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage('assets/profile_picture.jpg'),
+                radius: 30,
+              ),
+              SizedBox(height: 10),
+              Text(
+                'John Doe',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'johndoe@example.com',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
+            ],
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.home),
+          title: const Text('Home'),
+          onTap: () {
+            // Handle Home onTap
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.work),
+          title: const Text('Job Opportunities'),
+          onTap: () {
+            // Handle Job Opportunities onTap
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.people),
+          title: const Text('Mentors'),
+          onTap: () {
+            // Handle Mentors onTap
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.chat),
+          title: const Text('Chat'),
+          onTap: () {
+            // Handle Chat onTap
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.settings),
+          title: const Text('Settings'),
+          onTap: () {
+            // Handle Settings onTap
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.school),
+          title: const Text('Learn'),
+          onTap: () {
+            // Handle Learn onTap
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.person),
+          title: const Text('Profile Screen'),
+          onTap: () {
+            // Handle Profile Screen onTap
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.logout),
+          title: const Text('Log Out'),
+          onTap: () {
+            // Handle Log Out onTap
+          },
+        ),
+      ],
+    ),
+  );
+}

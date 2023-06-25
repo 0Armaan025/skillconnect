@@ -4,7 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../common/constants.dart';
 import '../../../common/utils.dart';
 import '../../../credentials/supabase.credentials.dart';
-import '../../home_screen/home_screen.dart';
+import '../../home_screen/screens/home_screen.dart';
 import '../models/user.dart';
 
 class AuthRepository {
