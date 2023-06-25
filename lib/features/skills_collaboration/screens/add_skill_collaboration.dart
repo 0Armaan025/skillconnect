@@ -30,7 +30,7 @@ class _AddSkillCollaborationScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
-      drawer: buildDrawer(),
+      drawer: buildDrawer(context),
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, kToolbarHeight),
         child: makeAppBar(context),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skillconnect/features/mentoring/widgets/mentoring_widget.dart';
 import 'package:skillconnect/features/skills_collaboration/screens/add_skill_collaboration.dart';
@@ -20,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
-      drawer: buildDrawer(),
+      drawer: buildDrawer(context),
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, kToolbarHeight),
         child: makeAppBar(context),

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:skillconnect/features/home_screen/screens/home_screen.dart';
 
 import 'constants.dart';
 
@@ -57,7 +58,7 @@ void showSnackBar(BuildContext context, String content) {
   );
 }
 
-Drawer buildDrawer() {
+Drawer buildDrawer(BuildContext context) {
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
@@ -70,7 +71,7 @@ Drawer buildDrawer() {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
-                backgroundImage: AssetImage('assets/profile_picture.jpg'),
+                backgroundImage: AssetImage('assets/images/avatar.png'),
                 radius: 30,
               ),
               SizedBox(height: 10),
@@ -96,7 +97,7 @@ Drawer buildDrawer() {
           leading: const Icon(Icons.home),
           title: const Text('Home'),
           onTap: () {
-            // Handle Home onTap
+            moveScreen(context, HomeScreen());
           },
         ),
         ListTile(

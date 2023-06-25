@@ -39,7 +39,7 @@ class _MentoringWidgetState extends State<MentoringWidget> {
           const SizedBox(
             height: 20,
           ),
-          Center(
+          const Center(
             child: CircleAvatar(
               radius: 20,
               backgroundImage: NetworkImage('https://picsum.photos/120'),

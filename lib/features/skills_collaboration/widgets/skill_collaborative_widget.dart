@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skillconnect/features/skills_collaboration/screens/add_skill_collaboration.dart';
+import 'package:skillconnect/features/skills_collaboration/screens/collaborate_screen.dart';
 
-import '../../../common/constants.dart';
 import '../../../common/utils.dart';
 
 class SkillCollaborativeWidget extends StatefulWidget {
@@ -85,7 +84,7 @@ class _SkillCollaborativeWidgetState extends State<SkillCollaborativeWidget> {
             alignment: Alignment.bottomCenter,
             child: InkWell(
               onTap: () {
-                moveScreen(context, const AddSkillCollaborationScreen());
+                moveScreen(context, const CollaborateScreen());
               },
               child: Container(
                 width: double.infinity,
