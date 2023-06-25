@@ -2,7 +2,7 @@
 
 
     <application
-        android:label="skillconnect"
+        android:label="SkillConnect"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

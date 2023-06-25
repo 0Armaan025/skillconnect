@@ -44,6 +44,11 @@ class AuthRepository {
           profilePictureUrl: publicUrl);
 
       imageFile = null;
+      userName = model.name;
+      userDetails = model.details;
+      userSkills = model.skills;
+      userProfileUrl = publicUrl;
+      uid = uid;
 
       firestore
           .collection('users')

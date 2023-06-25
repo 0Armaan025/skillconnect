@@ -23,7 +23,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     // TODO: implement initState
     super.initState();
     uid = firebaseAuth.currentUser?.uid ?? '';
-    getData();
+
+    if (firebaseAuth.currentUser != null) {
+      getData();
+    } else {}
   }
 
   void getData() {
