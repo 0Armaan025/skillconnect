@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skillconnect/common/utils.dart';
+import 'package:skillconnect/features/mentoring/screens/get_mentored_screen.dart';
 
 import '../../../common/constants.dart';
-import '../../../common/utils.dart';
 
 class MentoringWidget extends StatefulWidget {
   const MentoringWidget({super.key});
@@ -78,7 +79,9 @@ class _MentoringWidgetState extends State<MentoringWidget> {
           //small btn saying "get mentored"
           Center(
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                moveScreen(context, const GetMentoredScreen());
+              },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.blue),
                 shape: MaterialStateProperty.all(

@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:skillconnect/features/chat/screens/chat_screen.dart';
 import 'package:skillconnect/features/home_screen/screens/home_screen.dart';
+import 'package:skillconnect/features/mentoring/screens/mentors_list_screen.dart';
 
 import 'constants.dart';
 
@@ -111,14 +113,14 @@ Drawer buildDrawer(BuildContext context) {
           leading: const Icon(Icons.people),
           title: const Text('Mentors'),
           onTap: () {
-            // Handle Mentors onTap
+            moveScreen(context, const MentorsListScreen());
           },
         ),
         ListTile(
           leading: const Icon(Icons.chat),
           title: const Text('Chat'),
           onTap: () {
-            // Handle Chat onTap
+            moveScreen(context, ChatScreen());
           },
         ),
         ListTile(
