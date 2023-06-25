@@ -52,10 +52,6 @@ We welcome contributions from the community to enhance SkillConnect. To contribu
 4. Push to the branch: `git push origin feature/YourFeature`.
 5. Create a new Pull Request.
 
-## Support
-
-If you encounter any issues, have questions, or need assistance with SkillConnect, please reach out to our support team at support@skillconnect.com. We are here to help!
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE.md). Feel free to use, modify, and distribute it as per the terms of the license.
