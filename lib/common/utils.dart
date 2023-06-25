@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skillconnect/features/chat/screens/chat_screen.dart';
@@ -66,29 +67,29 @@ Drawer buildDrawer(BuildContext context) {
     child: ListView(
       padding: EdgeInsets.zero,
       children: [
-        const DrawerHeader(
-          decoration: BoxDecoration(
+        DrawerHeader(
+          decoration: const BoxDecoration(
             color: Colors.blue,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
-                backgroundImage: AssetImage('assets/images/avatar.png'),
+                backgroundImage: NetworkImage(userProfileUrl),
                 radius: 30,
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
-                'John Doe',
-                style: TextStyle(
+                userName,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                'johndoe@example.com',
-                style: TextStyle(
+                email,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                 ),
@@ -135,7 +136,7 @@ Drawer buildDrawer(BuildContext context) {
           leading: const Icon(Icons.school),
           title: const Text('Learn'),
           onTap: () {
-            moveScreen(context, CoursesScreen());
+            moveScreen(context, CourseScreen());
           },
         ),
         ListTile(

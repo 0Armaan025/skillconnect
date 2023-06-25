@@ -10,6 +10,8 @@ const String appTagline = "Empower, Collaborate, Thrive.";
 const Color bgColor = Color(0xFFf3f4fd);
 
 String uid = "";
+String userName = "";
+String email = "";
 
 String userProfileUrl = "";
 

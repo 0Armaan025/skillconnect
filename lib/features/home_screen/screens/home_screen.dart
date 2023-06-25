@@ -152,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: [
                     Text(
-                      "Want to be mentored by someone?",
+                      "Want to be mentored by a mentor?",
                       style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 16,
@@ -170,7 +170,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: const [
-                    MentoringWidget(),
                     MentoringWidget(),
                   ],
                 ),

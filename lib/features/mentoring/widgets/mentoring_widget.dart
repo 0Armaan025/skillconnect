@@ -13,7 +13,7 @@ class MentoringWidget extends StatefulWidget {
 }
 
 class _MentoringWidgetState extends State<MentoringWidget> {
-  List<String> skills = ['skill 1', 'skill 2'];
+  List<String> skills = ['Flutter'];
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class _MentoringWidgetState extends State<MentoringWidget> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
-                "Person Details Here like the name, what they do and blah blah blah bnad blah",
+                "I'm a Flutter Developer, \nand I'm here to help you!",
                 style: GoogleFonts.poppins(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,

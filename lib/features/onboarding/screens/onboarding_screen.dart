@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +18,27 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    uid = firebaseAuth.currentUser?.uid ?? '';
+    getData();
+  }
+
+  void getData() {
+    var data = firestore
+        .collection('users')
+        .doc(uid)
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      userName = snapshot.get('name');
+      userProfileUrl = snapshot.get('profilePictureUrl');
+      email = snapshot.get('email');
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
